@@ -169,13 +169,29 @@ export default function App() {
         </div>
       </section>
 
-      {/* 4. CTA */}
-      <section id="cta" className="py-32 md:py-48 px-6 md:px-12 bg-[#F9F9F9] flex justify-center items-center">
+      {/* 4. CTA mit neuem Bild im weißen Bereich */}
+      <section id="cta" className="py-32 md:py-48 px-6 md:px-12 bg-[#F9F9F9] flex flex-col justify-center items-center">
+        
+        {/* Neues Bild */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full max-w-7xl mx-auto mb-24 aspect-[21/9] overflow-hidden bg-stone-200"
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1600607688969-a5bfcd64bd40?q=80&w=2940&auto=format&fit=crop" 
+            alt="Moderne Architektur Dachlandschaft" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-[3s]"
+          />
+        </motion.div>
+
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="max-w-4xl mx-auto text-center"
         >
           <span className="text-[#B87333] uppercase tracking-[0.2em] text-xs font-bold mb-6 block">
