@@ -1,26 +1,57 @@
-import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ArrowUpRight, X } from "lucide-react";
 
 export default function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-[#F9F9F9] text-[#111111] font-sans selection:bg-[#B87333] selection:text-white">
-      {/* Navbar - Minimalistisch & Skandinavisch */}
+      {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 p-6 md:px-12 flex justify-between items-center mix-blend-difference text-white">
         <span className="text-sm font-bold tracking-widest uppercase">Langenkämper.</span>
-        <button className="text-xs uppercase tracking-widest hover:text-[#B87333] transition-colors duration-300">
+        <button 
+          onClick={() => setIsMenuOpen(true)}
+          className="text-xs uppercase tracking-widest hover:text-[#B87333] transition-colors duration-300"
+        >
           Menü
         </button>
       </nav>
 
-      {/* 1. HERO - High-End Experience */}
-      <section className="relative h-screen flex flex-col justify-end p-6 md:p-12 pb-24 overflow-hidden bg-[#111111]">
+      {/* Vollbild-Menü Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[60] bg-[#111111] text-white flex flex-col justify-center items-center"
+          >
+            <button 
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-6 right-6 md:right-12 p-2 text-white hover:text-[#B87333] transition-colors"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <ul className="text-center space-y-8 text-3xl md:text-5xl font-medium tracking-tighter">
+              <li><a href="#home" onClick={() => setIsMenuOpen(false)} className="hover:text-[#B87333] transition-colors">Startseite</a></li>
+              <li><a href="#philosophie" onClick={() => setIsMenuOpen(false)} className="hover:text-[#B87333] transition-colors">Philosophie</a></li>
+              <li><a href="#leistungen" onClick={() => setIsMenuOpen(false)} className="hover:text-[#B87333] transition-colors">Leistungen</a></li>
+              <li><a href="#cta" onClick={() => setIsMenuOpen(false)} className="hover:text-[#B87333] transition-colors">Kontakt</a></li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* 1. HERO */}
+      <section id="home" className="relative h-screen flex flex-col justify-end p-6 md:p-12 pb-24 overflow-hidden bg-[#111111]">
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2, ease: "easeOut" }}
           className="absolute inset-0 z-0"
         >
-          {/* Weitwinklige Drohnenaufnahme / Architektur */}
           <img
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2940&auto=format&fit=crop"
             alt="Moderne Dacharchitektur"
@@ -63,8 +94,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* 2. PHILOSOPHIE - Asymmetrisches Editorial Design */}
-      <section className="py-32 md:py-48 px-6 md:px-12 bg-[#F9F9F9]">
+      {/* 2. PHILOSOPHIE */}
+      <section id="philosophie" className="py-32 md:py-48 px-6 md:px-12 bg-[#F9F9F9]">
         <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 md:gap-24 items-center">
           
           <motion.div 
@@ -88,7 +119,6 @@ export default function App() {
             </p>
           </motion.div>
 
-          {/* Ästhetische Makro-Detailaufnahme */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -106,8 +136,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* 3. LEISTUNGEN - Minimalistische Struktur / Parallax-Feel */}
-      <section className="py-32 px-6 md:px-12 bg-[#111111] text-white">
+      {/* 3. LEISTUNGEN */}
+      <section id="leistungen" className="py-32 px-6 md:px-12 bg-[#111111] text-white">
         <div className="max-w-7xl mx-auto">
           <span className="text-[#B87333] uppercase tracking-[0.2em] text-xs font-bold mb-16 block">
             Portfolio
@@ -139,7 +169,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 4. CTA - Reines Weiß / Raumwirkung */}
+      {/* 4. CTA */}
       <section id="cta" className="py-32 md:py-48 px-6 md:px-12 bg-[#F9F9F9] flex justify-center items-center">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
