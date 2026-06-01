@@ -62,7 +62,6 @@ export default function App() {
           transition={{ duration: 2.5, ease: "easeOut" }}
           className="absolute inset-0 z-0"
         >
-          {/* Cinematic Drone Shot */}
           <img
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2940&auto=format&fit=crop"
             alt="Moderne Dacharchitektur"
@@ -91,7 +90,7 @@ export default function App() {
             className="text-6xl md:text-9xl lg:text-[11rem] text-white font-medium tracking-tighter leading-[0.85] mb-8 uppercase"
           >
             Industrie <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#777]">Standard.</span>
-          </motion.div>
+          </motion.h1>
 
           <motion.div 
             initial={{ opacity: 0 }}
@@ -111,12 +110,10 @@ export default function App() {
 
       {/* 2. EXZELLENZ - Editorial / Makro-Texturen / Parallax */}
       <section id="exzellenz" className="py-32 md:py-56 px-6 md:px-12 relative overflow-hidden bg-[#0A0A0A]">
-        {/* Abstract Background Element */}
         <div className="absolute top-0 right-[-10%] w-[50vw] h-[50vw] bg-[#FF4500]/5 blur-[150px] rounded-full pointer-events-none" />
 
         <div className="max-w-[90rem] mx-auto grid lg:grid-cols-12 gap-16 md:gap-24 items-start relative z-10">
           
-          {/* Sticky Text Block */}
           <div className="lg:col-span-5 lg:sticky lg:top-40">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
@@ -138,7 +135,6 @@ export default function App() {
             </motion.div>
           </div>
 
-          {/* Scrolling Macro Textures - Asymmetrical */}
           <div className="lg:col-span-7 space-y-32 mt-20 lg:mt-0">
             <motion.div 
               style={{ y: yParallax }}
@@ -198,7 +194,6 @@ export default function App() {
                 transition={{ duration: 0.8 }}
                 className="group relative border-b border-white/10 py-12 md:py-16 cursor-crosshair overflow-hidden"
               >
-                {/* Hover Reveal Background */}
                 <div className="absolute inset-0 bg-[#FF4500]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
                 
                 <div className="relative z-10 grid md:grid-cols-12 gap-6 md:gap-12 items-baseline">
