@@ -1,0 +1,6 @@
+{
+  "name": "Tischlerei Website",
+  "description": "Moderne, konvertierungsoptimierte Landingpage für eine Tischlerei mit klarer Struktur.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
