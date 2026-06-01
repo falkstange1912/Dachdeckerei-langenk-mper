@@ -1,119 +1,163 @@
 import { motion } from "motion/react";
-import { ArrowRight, Hammer, CheckCircle, PenTool } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#FDFCFB] text-stone-900 font-sans selection:bg-stone-200">
-      {/* Navbar */}
-      <nav className="absolute top-0 w-full z-50 p-6 flex justify-between items-center text-white/90">
-        <span className="font-serif text-xl tracking-wide font-medium">Langenkämper.</span>
-        <button className="text-sm uppercase tracking-widest hover:text-white transition-colors">
+    <div className="min-h-screen bg-[#F9F9F9] text-[#111111] font-sans selection:bg-[#B87333] selection:text-white">
+      {/* Navbar - Minimalistisch & Skandinavisch */}
+      <nav className="fixed top-0 w-full z-50 p-6 md:px-12 flex justify-between items-center mix-blend-difference text-white">
+        <span className="text-sm font-bold tracking-widest uppercase">Langenkämper.</span>
+        <button className="text-xs uppercase tracking-widest hover:text-[#B87333] transition-colors duration-300">
           Menü
         </button>
       </nav>
 
-      {/* 1. HERO */}
-      <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      {/* 1. HERO - High-End Experience */}
+      <section className="relative h-screen flex flex-col justify-end p-6 md:p-12 pb-24 overflow-hidden bg-[#111111]">
+        <motion.div 
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+          className="absolute inset-0 z-0"
+        >
+          {/* Weitwinklige Drohnenaufnahme / Architektur */}
           <img
-            src="https://images.unsplash.com/photo-1632733711675-3fbdf3923d73?q=80&w=2940&auto=format&fit=crop"
-            alt="Dachdecker Braunschweig"
-            className="w-full h-full object-cover"
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2940&auto=format&fit=crop"
+            alt="Moderne Dacharchitektur"
+            className="w-full h-full object-cover opacity-50"
           />
-          <div className="absolute inset-0 bg-stone-900/60" />
-        </div>
+        </motion.div>
 
-        <div className="relative z-10 text-center px-6 max-w-4xl pt-20">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="font-serif text-4xl md:text-6xl lg:text-7xl text-white font-medium tracking-tight leading-[1.1]"
-          >
-            Ihr Dachdecker in Braunschweig.
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-6 text-lg md:text-xl text-stone-200 font-light tracking-wide max-w-2xl mx-auto"
-          >
-            Herzlich willkommen bei René Langenkämper, dem Dachdeckerbetrieb und Baudienstleister für den Großraum Braunschweig. 
-          </motion.p>
-          <motion.div
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-start">
+          <motion.span 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-10"
+            transition={{ duration: 1, delay: 0.5 }}
+            className="text-[#B87333] uppercase tracking-[0.2em] text-xs font-bold mb-6"
           >
-            <a href="#cta" className="inline-flex items-center gap-2 bg-white text-stone-900 px-8 py-4 text-sm uppercase tracking-widest hover:bg-stone-100 transition-colors">
-              Anfrage starten <ArrowRight className="w-4 h-4" />
+            Ihr Dachdecker in Braunschweig
+          </motion.span>
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="text-6xl md:text-8xl lg:text-[10rem] text-white font-medium tracking-tighter leading-[0.85] mb-8"
+          >
+            HERZLICH <br/> WILLKOMMEN.
+          </motion.h1>
+
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="max-w-md"
+          >
+            <p className="text-stone-300 font-light leading-relaxed mb-8 text-lg">
+              Bei René Langenkämper, dem Dachdeckerbetrieb und Baudienstleister für den Großraum Braunschweig.
+            </p>
+            <a href="#cta" className="group inline-flex items-center gap-4 text-xs uppercase tracking-widest text-white border-b border-white/30 pb-2 hover:border-[#B87333] transition-colors duration-300">
+              Projekt starten <ArrowUpRight className="w-4 h-4 group-hover:text-[#B87333] transition-colors" />
             </a>
           </motion.div>
         </div>
       </section>
 
-      {/* 2. PROMISE */}
-      <section className="py-24 md:py-32 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-stone-400 uppercase tracking-widest text-xs font-semibold mb-6 block">Unsere Firmenphilosophie</span>
-          <h2 className="font-serif text-3xl md:text-5xl leading-tight text-stone-800 mb-8">
-            „Wir sind erst zufrieden, <br className="hidden md:block"/>
-            wenn Sie es sind!“
-          </h2>
-          <p className="text-stone-500 font-light text-lg leading-relaxed max-w-2xl mx-auto">
-            40 Jahre Berufserfahrung sollen Ihr Vorteil sein. Unser regionaler Betrieb aus Cremlingen bei Braunschweig beschäftigt 10 qualifizierte Mitarbeiter mit umfangreichem Fertigungs-Know-How. Professionelle Technik und modern ausgestattete Einsatzfahrzeuge garantieren Ihnen besten Service.
-          </p>
-          <div className="w-16 h-[1px] bg-stone-300 mx-auto mt-12"></div>
-        </div>
-      </section>
-
-      {/* 3. DETAILS (Leistungen) */}
-      <section className="py-20 bg-stone-100/50 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-3xl text-stone-800 uppercase tracking-widest text-sm font-semibold">
-              Beraten │ Planen │ Ausführen
-            </h2>
-          </div>
+      {/* 2. PHILOSOPHIE - Asymmetrisches Editorial Design */}
+      <section className="py-32 md:py-48 px-6 md:px-12 bg-[#F9F9F9]">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 md:gap-24 items-center">
           
-          <div className="grid md:grid-cols-3 gap-12">
-            <motion.div className="flex flex-col items-center text-center">
-              <div className="w-14 h-14 bg-stone-200 rounded-full flex justify-center items-center mb-6 text-stone-600">
-                <Hammer className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-serif font-medium mb-3">Dach & Fassade</h3>
-              <p className="text-stone-500 font-light leading-relaxed">Von der Flachdachabdichtung über die klassische Steildacheindeckung bis hin zur modernen Fassadenbekleidung.</p>
-            </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="md:col-span-5"
+          >
+            <span className="text-[#B87333] uppercase tracking-[0.2em] text-xs font-bold mb-6 block">
+              40 Jahre Berufserfahrung
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#111111] font-medium tracking-tighter leading-[1.1] mb-8">
+              Wir sind erst zufrieden, wenn Sie es sind.
+            </h2>
+            <p className="text-stone-500 font-light text-lg leading-relaxed mb-6">
+              Unser regionaler Betrieb aus Cremlingen beschäftigt 10 qualifizierte Mitarbeiter mit umfangreichem Fertigungs-Know-How.
+            </p>
+            <p className="text-stone-500 font-light leading-relaxed">
+              Professionelle Technik und modern ausgestattete Einsatzfahrzeuge garantieren Ihnen besten Service und hochwertig-professionelle Qualitätsarbeit.
+            </p>
+          </motion.div>
 
-            <motion.div className="flex flex-col items-center text-center">
-              <div className="w-14 h-14 bg-stone-200 rounded-full flex justify-center items-center mb-6 text-stone-600">
-                <PenTool className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-serif font-medium mb-3">Details & Fenster</h3>
-              <p className="text-stone-500 font-light leading-relaxed">Fachmännische Bauklempnerei, Einbau von Wohndachfenstern und besondere Design-Detailausführungen.</p>
-            </motion.div>
+          {/* Ästhetische Makro-Detailaufnahme */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="md:col-span-7 aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-stone-200"
+          >
+            <img 
+              src="https://images.unsplash.com/photo-1517581177682-a085eb7fac11?q=80&w=2946&auto=format&fit=crop" 
+              alt="Architektur Detail Ziegelstruktur" 
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-[3s]"
+            />
+          </motion.div>
 
-            <motion.div className="flex flex-col items-center text-center">
-              <div className="w-14 h-14 bg-stone-200 rounded-full flex justify-center items-center mb-6 text-stone-600">
-                <CheckCircle className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-serif font-medium mb-3">Die helfende Hand</h3>
-              <p className="text-stone-500 font-light leading-relaxed">Als moderner Bauhandwerksbetrieb sind wir nicht nur für Großprojekte da, sondern bieten auch einfach „nur“ die helfende Hand, wenn Sie sie brauchen.</p>
-            </motion.div>
+        </div>
+      </section>
+
+      {/* 3. LEISTUNGEN - Minimalistische Struktur / Parallax-Feel */}
+      <section className="py-32 px-6 md:px-12 bg-[#111111] text-white">
+        <div className="max-w-7xl mx-auto">
+          <span className="text-[#B87333] uppercase tracking-[0.2em] text-xs font-bold mb-16 block">
+            Portfolio
+          </span>
+          
+          <div className="flex flex-col border-t border-white/10">
+            {[
+              { title: "Beraten", desc: "Von der Flachdachabdichtung bis zur professionellen Bauklempnerei." },
+              { title: "Planen", desc: "Steildacheindeckung, Fassadenbekleidung und moderne Wohndachfenster." },
+              { title: "Ausführen", desc: "Besondere Design-Detailausführungen oder einfach 'nur' die helfende Hand." }
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 1, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className="grid md:grid-cols-12 gap-8 py-16 border-b border-white/10 group cursor-pointer"
+              >
+                <h3 className="md:col-span-5 text-4xl md:text-6xl font-medium tracking-tighter text-stone-500 group-hover:text-white transition-colors duration-500">
+                  {item.title}
+                </h3>
+                <p className="md:col-span-7 text-stone-400 font-light text-xl md:text-2xl leading-relaxed group-hover:text-stone-200 transition-colors duration-500 flex items-center">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 5. CTA */}
-      <section id="cta" className="bg-stone-900 text-white py-24 px-6 text-center">
-        <h2 className="font-serif text-4xl md:text-5xl mb-8">Bereit für Ihr Projekt?</h2>
-        <p className="text-stone-400 mb-12 max-w-xl mx-auto">
-          Nutzen Sie unsere 40 Jahre Berufserfahrung für Ihr nächstes Bauvorhaben in Braunschweig und Umgebung.
-        </p>
-        <button className="bg-white text-stone-900 px-10 py-5 text-sm uppercase tracking-widest font-medium hover:bg-stone-200 transition">
-          Kontakt aufnehmen
-        </button>
+      {/* 4. CTA - Reines Weiß / Raumwirkung */}
+      <section id="cta" className="py-32 md:py-48 px-6 md:px-12 bg-[#F9F9F9] flex justify-center items-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <span className="text-[#B87333] uppercase tracking-[0.2em] text-xs font-bold mb-6 block">
+            Ihre Vision. Unser Handwerk.
+          </span>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl text-[#111111] font-medium tracking-tighter mb-12 leading-[0.9]">
+            Architektur <br/> vollenden.
+          </h2>
+          <button className="bg-[#111111] text-white px-12 py-5 text-xs uppercase tracking-[0.2em] font-bold hover:bg-[#B87333] transition-colors duration-500">
+            Kontakt aufnehmen
+          </button>
+        </motion.div>
       </section>
     </div>
   );
