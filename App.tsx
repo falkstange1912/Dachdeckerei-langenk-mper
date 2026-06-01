@@ -20,7 +20,7 @@ export default function App() {
         </button>
       </nav>
 
-      {/* Menü Overlay */}
+      {/* Menü Overlay - Strukturiert */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -28,7 +28,7 @@ export default function App() {
             animate={{ opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }}
             exit={{ opacity: 0, clipPath: "inset(0% 0% 100% 0%)" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[60] bg-[#0A0A0A] text-white flex flex-col justify-center items-center"
+            className="fixed inset-0 z-[60] bg-[#0A0A0A] text-white flex flex-col justify-center"
           >
             <button 
               onClick={() => setIsMenuOpen(false)}
@@ -36,20 +36,57 @@ export default function App() {
             >
               <X className="w-8 h-8" />
             </button>
-            <ul className="text-center space-y-6 text-5xl md:text-8xl font-medium tracking-tighter uppercase">
-              {["Startseite", "Exzellenz", "Kompetenz", "Kontakt"].map((item, index) => (
-                <motion.li 
-                  key={item}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 + 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <a href={`#${item.toLowerCase()}`} onClick={() => setIsMenuOpen(false)} className="hover:text-[#FF4500] transition-colors block py-2">
-                    {item}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
+            
+            <div className="w-full max-w-[90rem] mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-16 items-center">
+              <ul className="space-y-6 md:space-y-10">
+                {[
+                  { id: "01", name: "Startseite" },
+                  { id: "02", name: "Exzellenz" },
+                  { id: "03", name: "Kompetenz" },
+                  { id: "04", name: "Kontakt" }
+                ].map((item, index) => (
+                  <motion.li 
+                    key={item.name}
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 + 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex items-baseline gap-6 group"
+                  >
+                    <span className="text-xs font-mono text-[#FF4500]">{item.id}</span>
+                    <a 
+                      href={`#${item.name.toLowerCase()}`} 
+                      onClick={() => setIsMenuOpen(false)} 
+                      className="text-4xl md:text-6xl font-medium tracking-tighter uppercase text-stone-400 group-hover:text-white group-hover:translate-x-4 transition-all duration-500"
+                    >
+                      {item.name}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8, duration: 1 }}
+                className="hidden md:flex flex-col gap-12 border-l border-white/10 pl-16"
+              >
+                <div>
+                  <span className="text-[#FF4500] text-xs uppercase tracking-[0.2em] font-bold block mb-4">Firmensitz</span>
+                  <p className="text-stone-400 font-light leading-relaxed">
+                    René Langenkämper<br/>
+                    Dachdeckerbetrieb<br/>
+                    Cremlingen / Braunschweig
+                  </p>
+                </div>
+                <div>
+                  <span className="text-[#FF4500] text-xs uppercase tracking-[0.2em] font-bold block mb-4">Kontakt</span>
+                  <p className="text-stone-400 font-light leading-relaxed">
+                    info@dach-braunschweig.de<br/>
+                    +49 (0) 123 456 789
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
